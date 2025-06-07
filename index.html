@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa de Desarrollo Web - Aprende desde Cero</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .code-block {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-left: 4px solid #3b82f6;
+        }
+        .tech-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            border: 1px solid #e2e8f0;
+        }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #3b82f6;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .section-gradient {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #4ade80, #22c55e, #16a34a);
+        }
+        .roadmap-step {
+            position: relative;
+        }
+        .roadmap-step::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 2px;
+            height: 50px;
+            background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+            transform: translateX(-50%);
+        }
+        .roadmap-step:last-child::before {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-code text-3xl text-blue-600 mr-3"></i>
+                        <span class="text-xl font-bold text-gray-800">DevWeb Academy</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#introduccion" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Introducción</a>
+                    <a href="#frontend" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Frontend</a>
+                    <a href="#backend" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Backend</a>
+                    <a href="#bases-datos" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Bases de Datos</a>
+                    <a href="#herramientas" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Herramientas</a>
+                    <a href="#roadmap" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">Roadmap</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#introduccion" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Introducción</a>
+                <a href="#frontend" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Frontend</a>
+                <a href="#backend" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Backend</a>
+                <a href="#bases-datos" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Bases de Datos</a>
+                <a href="#herramientas" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Herramientas</a>
+                <a href="#roadmap" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Roadmap</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white pt-20 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Aprende Desarrollo Web
+                    <span class="block text-yellow-300">desde Cero</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+                    Guía completa y actualizada para convertirte en desarrollador web profesional. 
+                    Desde los fundamentos hasta las tecnologías más avanzadas.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#introduccion" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                        <i class="fas fa-play mr-2"></i>Comenzar Ahora
+                    </a>
+                    <a href="#roadmap" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+                        <i class="fas fa-map mr-2"></i>Ver Roadmap
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introducción al Desarrollo Web -->
+    <section id="introduccion" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-globe text-blue-600 mr-3"></i>
+                    Introducción al Desarrollo Web
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprende los fundamentos y la arquitectura de las aplicaciones web modernas
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-desktop text-3xl text-blue-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">¿Qué son las Aplicaciones Web?</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Las aplicaciones web son programas que se ejecutan en navegadores web y pueden ser accedidas 
+                        desde cualquier dispositivo conectado a internet. No requieren instalación y se actualizan automáticamente.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Accesibles desde cualquier dispositivo</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Actualizaciones automáticas</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Multiplataforma</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Fácil mantenimiento</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-layer-group text-3xl text-purple-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">Frontend vs Backend</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 mb-2">
+                                <i class="fas fa-eye mr-2"></i>Frontend (Cliente)
+                            </h4>
+                            <p class="text-blue-700 text-sm">
+                                La parte visible de la aplicación que interactúa directamente con el usuario. 
+                                Incluye la interfaz, diseño, navegación y experiencia de usuario.
+                            </p>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-purple-800 mb-2">
+                                <i class="fas fa-server mr-2"></i>Backend (Servidor)
+                            </h4>
+                            <p class="text-purple-700 text-sm">
+                                La lógica del servidor, bases de datos, autenticación, APIs y toda la funcionalidad 
+                                que procesa datos y gestiona la aplicación desde el servidor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-card rounded-xl p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">
+                    <i class="fas fa-sitemap text-green-600 mr-3"></i>
+                    Arquitectura Básica de Aplicaciones Web
+                </h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-user text-2xl text-blue-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Usuario</h4>
+                        <p class="text-sm text-gray-600">Interactúa con la aplicación a través del navegador</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-window-maximize text-2xl text-green-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Frontend</h4>
+                        <p class="text-sm text-gray-600">HTML, CSS, JavaScript - Interfaz de usuario</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-server text-2xl text-purple-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Backend</h4>
+                        <p class="text-sm text-gray-600">Servidor, APIs, lógica de negocio</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-database text-2xl text-red-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Base de Datos</h4>
+                        <p class="text-sm text-gray-600">Almacenamiento y gestión de datos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frontend Technologies -->
+    <section id="frontend" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-palette text-blue-600 mr-3"></i>
+                    Tecnologías Frontend
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Domina las tecnologías que crean experiencias de usuario excepcionales
+                </p>
+            </div>
+
+            <!-- Fundamentos Frontend -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">Fundamentos Esenciales</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="tech-card rounded-xl p-6">
+                        <div class="text-center mb-4">
+                            <i class="fab fa-html5 text-5xl text-orange-500 mb-3"></i>
+                            <h4 class="text-xl font-bold">HTML5</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Lenguaje de marcado que estructura el contenido web. Define elementos, semántica y accesibilidad.
+                        </p>
+                        <div class="code-block p-4 rounded-lg text-white text-sm">
+                            <code>
+&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="es"&gt;<br>
+&nbsp;&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Mi Web&lt;/title&gt;<br>
+&nbsp;&nbsp;&lt;/head&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;¡Hola Mundo!&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="tech-card rounded-xl p-6">
+                        <div class="text-center mb-4">
+                            <i class="fab fa-css3-alt text-5xl text-blue-500 mb-3"></i>
+                            <h4 class="text-xl font-bold">CSS3</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Controla el diseño, colores, tipografía y animaciones. Incluye Flexbox, Grid y responsive design.
+                        </p>
+                        <div class="code-block p-4 rounded-lg text-white text-sm">
+                            <code>
+.container {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;justify-content: center;<br>
+&nbsp;&nbsp;align-items: center;<br>
+&nbsp;&nbsp;background: linear-gradient(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;45deg, #3b82f6, #8b5cf6<br>
+&nbsp;&nbsp;);<br>
+&nbsp;&nbsp;border-radius: 10px;<br>
+}
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="tech-card rounded-xl p-6">
+                        <div class="text-center mb-4">
+                            <i class="fab fa-js-square text-5xl text-yellow-500 mb-3"></i>
+                            <h4 class="text-xl font-bold">JavaScript</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Lenguaje de programación que añade interactividad, maneja eventos y comunica con APIs.
+                        </p>
+                        <div class="code-block p-4 rounded-lg text-white text-sm">
+                            <code>
+// Función interactiva<br>
+function saludar(nombre) {<br>
+&nbsp;&nbsp;const mensaje = `¡Hola, ${nombre}!`;<br>
+&nbsp;&nbsp;document.getElementById('saludo')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.textContent = mensaje;<br>
+}<br><br>
+// Event listener<br>
+button.addEventListener('click', () => {<br>
+&nbsp;&nbsp;saludar('Desarrollador');<br>
+});
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frameworks Modernos -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">Frameworks y Librerías Modernas</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="tech-card rounded-xl p-6">
+                        <div class="text-center mb-4">
+                            <i class="fab fa-react text-5xl text-cyan-500 mb-3"></i>
+                            <h4 class="text-xl font-bold">React</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Librería de Facebook para crear interfaces de usuario con componentes reutilizables y estado virtual DOM.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Componentes reutilizables</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Virtual DOM rápido</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Ecosistema extenso</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Gran comunidad</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-card rounded-xl p-6">
+                        <div class="text-center mb-4">
+                            <i class="fab fa-vuejs text-5xl text-green-500 mb-3"></i>
+                            <h4 class="text-xl font-bold">Vue.js</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Framework progresivo con curva de aprendizaje suave, perfecto para proyectos de cualquier tamaño.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Fácil de aprender</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Progresivo</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Documentación excelente</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Flexible</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-card rounded-xl p-6">
+                        <div class="text-center mb-4">
+                            <i class="fab fa-angular text-5xl text-red-500 mb-3"></i>
+                            <h4 class="text-xl font-bold">Angular</h4>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Framework completo de Google con TypeScript, perfecto para aplicaciones enterprise complejas.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Framework completo</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>TypeScript nativo</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Escalable</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Herramientas integradas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TypeScript y Herramientas -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-js-square text-3xl text-blue-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">TypeScript</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Superset de JavaScript que añade tipado estático, mejorando la detección de errores y la experiencia de desarrollo.
+                    </p>
+                    <div class="code-block p-4 rounded-lg text-white text-sm mb-4">
+                        <code>
+interface Usuario {<br>
+&nbsp;&nbsp;id: number;<br>
+&nbsp;&nbsp;nombre: string;<br>
+&nbsp;&nbsp;email: string;<br>
+}<br><br>
+function crearUsuario(datos: Usuario): Usuario {<br>
+&nbsp;&nbsp;return { ...datos, activo: true };<br>
+}
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Detección temprana de errores</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Mejor IDE support</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Refactoring seguro</li>
+                    </ul>
+                </div>
+
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-tools text-3xl text-orange-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">Herramientas de Desarrollo</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-orange-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-orange-800 mb-1">Build Tools</h4>
+                            <p class="text-sm text-orange-700">Webpack, Vite, Parcel - Empaquetado y optimización</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 mb-1">CSS Frameworks</h4>
+                            <p class="text-sm text-blue-700">Tailwind CSS, Bootstrap - Estilos utilitarios</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-800 mb-1">Testing</h4>
+                            <p class="text-sm text-green-700">Jest, Cypress - Pruebas automatizadas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backend Technologies -->
+    <section id="backend" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-server text-purple-600 mr-3"></i>
+                    Tecnologías Backend
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explora los lenguajes y frameworks que potencian el servidor
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JavaScript/Node.js -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-node-js text-5xl text-green-600 mb-3"></i>
+                        <h3 class="text-xl font-bold">JavaScript/Node.js</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Permite usar JavaScript en el servidor. Event-driven, no bloqueante, perfecto para aplicaciones en tiempo real.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+const express = require('express');<br>
+const app = express();<br><br>
+app.get('/api/usuarios', (req, res) => {<br>
+&nbsp;&nbsp;res.json({ usuarios: [] });<br>
+});<br><br>
+app.listen(3000);
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Mismo lenguaje frontend/backend</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>NPM ecosystem</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Alta performance I/O</li>
+                    </ul>
+                </div>
+
+                <!-- Python -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-python text-5xl text-blue-600 mb-3"></i>
+                        <h3 class="text-xl font-bold">Python</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Lenguaje versátil con sintaxis clara. Django, Flask y FastAPI ofrecen diferentes enfoques de desarrollo.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+# FastAPI ejemplo<br>
+from fastapi import FastAPI<br><br>
+app = FastAPI()<br><br>
+@app.get("/usuarios")<br>
+def obtener_usuarios():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return {"usuarios": []}
+                        </code>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Django</span>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Flask</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">FastAPI</span>
+                    </div>
+                </div>
+
+                <!-- Java -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-java text-5xl text-red-600 mb-3"></i>
+                        <h3 class="text-xl font-bold">Java</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Lenguaje robusto y escalable. Spring Boot facilita la creación de aplicaciones enterprise.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+@RestController<br>
+public class UsuarioController {<br><br>
+&nbsp;&nbsp;@GetMapping("/usuarios")<br>
+&nbsp;&nbsp;public List&lt;Usuario&gt; obtenerUsuarios() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return usuarioService.findAll();<br>
+&nbsp;&nbsp;}<br>
+}
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Fuertemente tipado</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Ecosistema maduro</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Spring Boot</li>
+                    </ul>
+                </div>
+
+                <!-- PHP -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-php text-5xl text-purple-600 mb-3"></i>
+                        <h3 class="text-xl font-bold">PHP</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Lenguaje web tradicional, fácil de aprender. Laravel y Symfony son frameworks modernos y potentes.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+// Laravel Route<br>
+Route::get('/usuarios', function () {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return Usuario::all();<br>
+});<br><br>
+// Controller<br>
+class UsuarioController {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public function index() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return view('usuarios');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                        </code>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="inline-block bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Laravel</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Symfony</span>
+                    </div>
+                </div>
+
+                <!-- C# -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-code text-5xl text-blue-800 mb-3"></i>
+                        <h3 class="text-xl font-bold">C# (.NET)</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Lenguaje de Microsoft, multiplataforma con .NET Core. Excelente para aplicaciones empresariales.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+[ApiController]<br>
+[Route("api/[controller]")]<br>
+public class UsuariosController : ControllerBase<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[HttpGet]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public ActionResult&lt;IEnumerable&lt;Usuario&gt;&gt; Get()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Ok(usuarios);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Fuertemente tipado</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Cross-platform</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Alto rendimiento</li>
+                    </ul>
+                </div>
+
+                <!-- Ruby -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-gem text-5xl text-red-500 mb-3"></i>
+                        <h3 class="text-xl font-bold">Ruby</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Lenguaje elegante con Ruby on Rails, framework que prioriza la convención sobre configuración.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+# Rails Controller<br>
+class UsuariosController < ApplicationController<br>
+&nbsp;&nbsp;def index<br>
+&nbsp;&nbsp;&nbsp;&nbsp;@usuarios = Usuario.all<br>
+&nbsp;&nbsp;&nbsp;&nbsp;render json: @usuarios<br>
+&nbsp;&nbsp;end<br>
+end<br><br>
+# Route<br>
+resources :usuarios
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Sintaxis elegante</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Rails framework</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Desarrollo rápido</li>
+                    </ul>
+                </div>
+
+                <!-- Go -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-google text-5xl text-cyan-600 mb-3"></i>
+                        <h3 class="text-xl font-bold">Go</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Lenguaje de Google, compilado, concurrente y eficiente. Ideal para microservicios y sistemas distribuidos.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+func main() {<br>
+&nbsp;&nbsp;http.HandleFunc("/usuarios", usuariosHandler)<br>
+&nbsp;&nbsp;log.Fatal(http.ListenAndServe(":8080", nil))<br>
+}<br><br>
+func usuariosHandler(w http.ResponseWriter, r *http.Request) {<br>
+&nbsp;&nbsp;json.NewEncoder(w).Encode(usuarios)<br>
+}
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Alta performance</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Concurrencia nativa</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Compilación rápida</li>
+                    </ul>
+                </div>
+
+                <!-- Rust -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-rust text-5xl text-orange-600 mb-3"></i>
+                        <h3 class="text-xl font-bold">Rust</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Lenguaje de sistemas memory-safe, extremadamente rápido y seguro. Ideal para servicios de alto rendimiento.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+use actix_web::{web, App, HttpResponse, HttpServer};<br><br>
+async fn usuarios() -> HttpResponse {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HttpResponse::Ok().json(vec!["usuario1", "usuario2"])<br>
+}<br><br>
+#[actix_web::main]<br>
+async fn main() -> std::io::Result&lt;()&gt; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HttpServer::new(|| App::new().route("/usuarios", web::get().to(usuarios)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.bind("127.0.0.1:8080")?.run().await<br>
+}
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Memory safety</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Zero-cost abstractions</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Ultra performance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bases de Datos -->
+    <section id="bases-datos" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-database text-green-600 mr-3"></i>
+                    Bases de Datos
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprende las diferencias entre SQL y NoSQL, y elige la mejor opción para tu proyecto
+                </p>
+            </div>
+
+            <!-- SQL vs NoSQL -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-table text-3xl text-blue-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">Bases de Datos SQL</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Bases de datos relacionales con estructura de tablas, esquemas fijos y lenguaje SQL estándar.
+                    </p>
+                    <div class="space-y-3 mb-4">
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 mb-1">Características</h4>
+                            <ul class="text-sm text-blue-700 space-y-1">
+                                <li>• Estructura rígida (esquemas)</li>
+                                <li>• Relaciones entre tablas</li>
+                                <li>• ACID compliance</li>
+                                <li>• Lenguaje SQL estándar</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-800 mb-1">Ventajas</h4>
+                            <ul class="text-sm text-green-700 space-y-1">
+                                <li>• Consistencia de datos</li>
+                                <li>• Transacciones robustas</li>
+                                <li>• Consultas complejas</li>
+                                <li>• Madurez y estabilidad</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-project-diagram text-3xl text-purple-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">Bases de Datos NoSQL</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Bases de datos no relacionales, flexibles, escalables horizontalmente y sin esquemas fijos.
+                    </p>
+                    <div class="space-y-3 mb-4">
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-purple-800 mb-1">Características</h4>
+                            <ul class="text-sm text-purple-700 space-y-1">
+                                <li>• Esquemas flexibles</li>
+                                <li>• Escalabilidad horizontal</li>
+                                <li>• Diversos modelos de datos</li>
+                                <li>• Alto rendimiento</li>
+                            </ul>
+                        </div>
+                        <div class="bg-orange-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-orange-800 mb-1">Ventajas</h4>
+                            <ul class="text-sm text-orange-700 space-y-1">
+                                <li>• Flexibilidad de esquemas</li>
+                                <li>• Escalabilidad masiva</li>
+                                <li>• Desarrollo ágil</li>
+                                <li>• Manejo de big data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bases de Datos Populares -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- MySQL -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-database text-4xl text-blue-600 mb-3"></i>
+                        <h3 class="text-xl font-bold">MySQL</h3>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">SQL</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Base de datos relacional más popular del mundo. Rápida, confiable y ampliamente soportada.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+CREATE TABLE usuarios (<br>
+&nbsp;&nbsp;id INT AUTO_INCREMENT PRIMARY KEY,<br>
+&nbsp;&nbsp;nombre VARCHAR(100) NOT NULL,<br>
+&nbsp;&nbsp;email VARCHAR(100) UNIQUE,<br>
+&nbsp;&nbsp;fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP<br>
+);<br><br>
+SELECT * FROM usuarios WHERE activo = 1;
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Gratuita y open source</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Rendimiento excelente</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Amplio soporte</li>
+                    </ul>
+                </div>
+
+                <!-- PostgreSQL -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-elephant text-4xl text-blue-800 mb-3"></i>
+                        <h3 class="text-xl font-bold">PostgreSQL</h3>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">SQL</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Base de datos objeto-relacional avanzada con características enterprise y extensibilidad.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+-- Tipos de datos avanzados<br>
+CREATE TABLE productos (<br>
+&nbsp;&nbsp;id SERIAL PRIMARY KEY,<br>
+&nbsp;&nbsp;datos JSONB,<br>
+&nbsp;&nbsp;tags TEXT[],<br>
+&nbsp;&nbsp;ubicacion POINT<br>
+);<br><br>
+-- Consulta JSON<br>
+SELECT * FROM productos <br>
+WHERE datos->>'categoria' = 'electronica';
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Muy extensible</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Tipos de datos avanzados</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>ACID compliant</li>
+                    </ul>
+                </div>
+
+                <!-- MongoDB -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-leaf text-4xl text-green-600 mb-3"></i>
+                        <h3 class="text-xl font-bold">MongoDB</h3>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded">NoSQL</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Base de datos de documentos JSON, flexible y escalable. Perfecta para aplicaciones modernas.
+                    </p>
+                    <div class="code-block p-3 rounded-lg text-white text-xs mb-3">
+                        <code>
+// Insertar documento<br>
+db.usuarios.insertOne({<br>
+&nbsp;&nbsp;nombre: "Juan Pérez",<br>
+&nbsp;&nbsp;email: "juan@email.com",<br>
+&nbsp;&nbsp;perfil: {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;edad: 30,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;intereses: ["programación", "música"]<br>
+&nbsp;&nbsp;}<br>
+});<br><br>
+// Consultar<br>
+db.usuarios.find({"perfil.edad": {$gte: 25}});
+                        </code>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Esquemas flexibles</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>Escalabilidad horizontal</li>
+                        <li><i class="fas fa-check text-green-500 mr-1"></i>JSON nativo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ORMs -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">ORMs Populares (Object-Relational Mapping)</h3>
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="tech-card rounded-lg p-4 text-center">
+                        <i class="fas fa-code text-2xl text-yellow-600 mb-2"></i>
+                        <h4 class="font-semibold mb-1">Sequelize</h4>
+                        <p class="text-sm text-gray-600">ORM para Node.js compatible con múltiples bases SQL</p>
+                    </div>
+                    <div class="tech-card rounded-lg p-4 text-center">
+                        <i class="fab fa-python text-2xl text-blue-600 mb-2"></i>
+                        <h4 class="font-semibold mb-1">SQLAlchemy</h4>
+                        <p class="text-sm text-gray-600">ORM potente y flexible para Python</p>
+                    </div>
+                    <div class="tech-card rounded-lg p-4 text-center">
+                        <i class="fab fa-java text-2xl text-red-600 mb-2"></i>
+                        <h4 class="font-semibold mb-1">Hibernate</h4>
+                        <p class="text-sm text-gray-600">ORM estándar para aplicaciones Java</p>
+                    </div>
+                    <div class="tech-card rounded-lg p-4 text-center">
+                        <i class="fas fa-gem text-2xl text-red-500 mb-2"></i>
+                        <h4 class="font-semibold mb-1">Active Record</h4>
+                        <p class="text-sm text-gray-600">ORM integrado en Ruby on Rails</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Herramientas y Tecnologías -->
+    <section id="herramientas" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-toolbox text-orange-600 mr-3"></i>
+                    Herramientas y Tecnologías
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Domina las herramientas esenciales para el desarrollo web profesional
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Control de Versiones -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-git-alt text-3xl text-red-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">Control de Versiones - Git</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Sistema de control de versiones distribuido, esencial para colaboración y gestión de código.
+                    </p>
+                    <div class="code-block p-4 rounded-lg text-white text-sm mb-4">
+                        <code>
+# Comandos básicos de Git<br>
+git init                    # Inicializar repositorio<br>
+git add .                   # Agregar archivos al staging<br>
+git commit -m "mensaje"     # Confirmar cambios<br>
+git push origin main        # Subir cambios al repositorio remoto<br>
+git pull origin main        # Descargar últimos cambios<br>
+git branch feature/nueva    # Crear nueva rama<br>
+git checkout feature/nueva  # Cambiar a rama<br>
+git merge feature/nueva     # Fusionar rama
+                        </code>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-800 text-white p-3 rounded-lg text-center">
+                            <i class="fab fa-github text-2xl mb-2"></i>
+                            <h4 class="font-semibold">GitHub</h4>
+                            <p class="text-xs">Plataforma de hosting más popular</p>
+                        </div>
+                        <div class="bg-orange-600 text-white p-3 rounded-lg text-center">
+                            <i class="fab fa-gitlab text-2xl mb-2"></i>
+                            <h4 class="font-semibold">GitLab</h4>
+                            <p class="text-xs">CI/CD integrado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- APIs y Servicios Web -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-exchange-alt text-3xl text-blue-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">APIs y Servicios Web</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Interfaces que permiten la comunicación entre diferentes sistemas y aplicaciones.
+                    </p>
+                    <div class="space-y-3 mb-4">
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 mb-2">REST API</h4>
+                            <div class="code-block p-2 rounded text-white text-xs">
+                                <code>
+GET /api/usuarios      # Obtener todos<br>
+POST /api/usuarios     # Crear nuevo<br>
+PUT /api/usuarios/1    # Actualizar<br>
+DELETE /api/usuarios/1 # Eliminar
+                                </code>
+                            </div>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-purple-800 mb-2">GraphQL</h4>
+                            <div class="code-block p-2 rounded text-white text-xs">
+                                <code>
+query {<br>
+&nbsp;&nbsp;usuario(id: 1) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nombre<br>
+&nbsp;&nbsp;&nbsp;&nbsp;email<br>
+&nbsp;&nbsp;}<br>
+}
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Deployment y Hosting -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-cloud text-3xl text-cyan-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">Deployment y Hosting</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Plataformas y servicios para desplegar y alojar aplicaciones web en producción.
+                    </p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-black text-white p-3 rounded-lg text-center">
+                            <i class="fas fa-triangle text-xl mb-2"></i>
+                            <h4 class="font-semibold text-sm">Vercel</h4>
+                            <p class="text-xs">Frontend hosting</p>
+                        </div>
+                        <div class="bg-purple-600 text-white p-3 rounded-lg text-center">
+                            <i class="fab fa-heroku text-xl mb-2"></i>
+                            <h4 class="font-semibold text-sm">Heroku</h4>
+                            <p class="text-xs">Full-stack PaaS</p>
+                        </div>
+                        <div class="bg-orange-500 text-white p-3 rounded-lg text-center">
+                            <i class="fab fa-aws text-xl mb-2"></i>
+                            <h4 class="font-semibold text-sm">AWS</h4>
+                            <p class="text-xs">Cloud completo</p>
+                        </div>
+                        <div class="bg-blue-600 text-white p-3 rounded-lg text-center">
+                            <i class="fab fa-digital-ocean text-xl mb-2"></i>
+                            <h4 class="font-semibold text-sm">DigitalOcean</h4>
+                            <p class="text-xs">VPS simples</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testing -->
+                <div class="tech-card rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-bug text-3xl text-green-600 mr-4"></i>
+                        <h3 class="text-2xl font-bold">Testing</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Herramientas y metodologías para asegurar la calidad y funcionamiento del código.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-red-800 mb-1">Pruebas Unitarias</h4>
+                            <p class="text-sm text-red-700">Jest, Mocha, Pytest - Testear funciones individuales</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 mb-1">Pruebas de Integración</h4>
+                            <p class="text-sm text-blue-700">Supertest, Postman - Testear APIs y servicios</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-800 mb-1">Pruebas E2E</h4>
+                            <p class="text-sm text-green-700">Cypress, Playwright - Testear flujos completos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap de Aprendizaje -->
+    <section id="roadmap" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-route text-purple-600 mr-3"></i>
+                    Roadmap de Aprendizaje
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Tu ruta paso a paso para convertirte en desarrollador web profesional
+                </p>
+            </div>
+
+            <!-- Roadmap Steps -->
+            <div class="max-w-4xl mx-auto">
+                <div class="grid gap-8">
+                    <!-- Fase 1: Fundamentos -->
+                    <div class="roadmap-step">
+                        <div class="tech-card rounded-xl p-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
+                                    1
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold mb-3 text-blue-800">Fundamentos Web (1-2 meses)</h3>
+                                    <div class="grid md:grid-cols-3 gap-4 mb-4">
+                                        <div class="bg-orange-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-orange-800 mb-2">HTML5</h4>
+                                            <ul class="text-sm text-orange-700 space-y-1">
+                                                <li>• Elementos semánticos</li>
+                                                <li>• Formularios</li>
+                                                <li>• Accesibilidad</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-blue-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-blue-800 mb-2">CSS3</h4>
+                                            <ul class="text-sm text-blue-700 space-y-1">
+                                                <li>• Flexbox y Grid</li>
+                                                <li>• Responsive design</li>
+                                                <li>• Animaciones</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-yellow-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-yellow-800 mb-2">JavaScript</h4>
+                                            <ul class="text-sm text-yellow-700 space-y-1">
+                                                <li>• Sintaxis básica</li>
+                                                <li>• DOM manipulation</li>
+                                                <li>• Events</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-100 p-3 rounded-lg">
+                                        <h4 class="font-semibold mb-2">📚 Recursos Recomendados:</h4>
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• MDN Web Docs (documentación oficial)</li>
+                                            <li>• freeCodeCamp (curso gratuito)</li>
+                                            <li>• Codecademy (interactivo)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 2: JavaScript Avanzado -->
+                    <div class="roadmap-step">
+                        <div class="tech-card rounded-xl p-6">
+                            <div class="flex items-start">
+                                <div class="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
+                                    2
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold mb-3 text-green-800">JavaScript Avanzado (2-3 meses)</h3>
+                                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                        <div class="space-y-3">
+                                            <div class="bg-green-50 p-3 rounded-lg">
+                                                <h4 class="font-semibold text-green-800 mb-2">Conceptos Avanzados</h4>
+                                                <ul class="text-sm text-green-700 space-y-1">
+                                                    <li>• Async/Await y Promises</li>
+                                                    <li>• Closures y Scope</li>
+                                                    <li>• ES6+ Features</li>
+                                                    <li>• Module Systems</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-3">
+                                            <div class="bg-purple-50 p-3 rounded-lg">
+                                                <h4 class="font-semibold text-purple-800 mb-2">Herramientas</h4>
+                                                <ul class="text-sm text-purple-700 space-y-1">
+                                                    <li>• Git y GitHub</li>
+                                                    <li>• NPM/Yarn</li>
+                                                    <li>• Webpack/Vite</li>
+                                                    <li>• Babel</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-green-100 p-3 rounded-lg">
+                                        <h4 class="font-semibold mb-2">🚀 Proyecto Sugerido:</h4>
+                                        <p class="text-sm text-green-800">Calculadora avanzada o To-Do App con persistencia local</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 3: Framework Frontend -->
+                    <div class="roadmap-step">
+                        <div class="tech-card rounded-xl p-6">
+                            <div class="flex items-start">
+                                <div class="bg-cyan-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
+                                    3
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold mb-3 text-cyan-800">Framework Frontend (2-4 meses)</h3>
+                                    <div class="grid md:grid-cols-3 gap-4 mb-4">
+                                        <div class="bg-cyan-50 p-3 rounded-lg text-center">
+                                            <i class="fab fa-react text-3xl text-cyan-600 mb-2"></i>
+                                            <h4 class="font-semibold text-cyan-800">React</h4>
+                                            <p class="text-xs text-cyan-700">Más demandado en el mercado</p>
+                                        </div>
+                                        <div class="bg-green-50 p-3 rounded-lg text-center">
+                                            <i class="fab fa-vuejs text-3xl text-green-600 mb-2"></i>
+                                            <h4 class="font-semibold text-green-800">Vue.js</h4>
+                                            <p class="text-xs text-green-700">Más fácil de aprender</p>
+                                        </div>
+                                        <div class="bg-red-50 p-3 rounded-lg text-center">
+                                            <i class="fab fa-angular text-3xl text-red-600 mb-2"></i>
+                                            <h4 class="font-semibold text-red-800">Angular</h4>
+                                            <p class="text-xs text-red-700">Para aplicaciones enterprise</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-cyan-100 p-3 rounded-lg">
+                                        <h4 class="font-semibold mb-2">🎯 Enfócate en:</h4>
+                                        <ul class="text-sm text-cyan-800 space-y-1">
+                                            <li>• Componentes y Props</li>
+                                            <li>• Estado y ciclo de vida</li>
+                                            <li>• Routing</li>
+                                            <li>• Gestión de estado (Redux, Vuex, NgRx)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 4: Backend -->
+                    <div class="roadmap-step">
+                        <div class="tech-card rounded-xl p-6">
+                            <div class="flex items-start">
+                                <div class="bg-purple-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
+                                    4
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold mb-3 text-purple-800">Desarrollo Backend (3-4 meses)</h3>
+                                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                        <div class="bg-purple-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-purple-800 mb-2">Elige un Lenguaje</h4>
+                                            <ul class="text-sm text-purple-700 space-y-1">
+                                                <li>• <strong>Node.js</strong> - Si vienes de JavaScript</li>
+                                                <li>• <strong>Python</strong> - Sintaxis simple, muy popular</li>
+                                                <li>• <strong>Java</strong> - Para aplicaciones enterprise</li>
+                                                <li>• <strong>C#</strong> - Ecosistema Microsoft</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-blue-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-blue-800 mb-2">Conceptos Clave</h4>
+                                            <ul class="text-sm text-blue-700 space-y-1">
+                                                <li>• APIs REST</li>
+                                                <li>• Bases de datos</li>
+                                                <li>• Autenticación</li>
+                                                <li>• Middleware</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="bg-purple-100 p-3 rounded-lg">
+                                        <h4 class="font-semibold mb-2">🏗️ Proyecto Sugerido:</h4>
+                                        <p class="text-sm text-purple-800">API REST para blog o e-commerce con autenticación</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 5: Bases de Datos -->
+                    <div class="roadmap-step">
+                        <div class="tech-card rounded-xl p-6">
+                            <div class="flex items-start">
+                                <div class="bg-orange-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
+                                    5
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold mb-3 text-orange-800">Bases de Datos (1-2 meses)</h3>
+                                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                        <div class="bg-orange-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-orange-800 mb-2">SQL (Recomendado)</h4>
+                                            <ul class="text-sm text-orange-700 space-y-1">
+                                                <li>• MySQL o PostgreSQL</li>
+                                                <li>• Consultas básicas y avanzadas</li>
+                                                <li>• Relaciones entre tablas</li>
+                                                <li>• Índices y optimización</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-green-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-green-800 mb-2">NoSQL (Opcional)</h4>
+                                            <ul class="text-sm text-green-700 space-y-1">
+                                                <li>• MongoDB (documentos)</li>
+                                                <li>• Redis (cache)</li>
+                                                <li>• Cuándo usar cada tipo</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 6: Full Stack -->
+                    <div class="roadmap-step">
+                        <div class="tech-card rounded-xl p-6">
+                            <div class="flex items-start">
+                                <div class="bg-red-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
+                                    6
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold mb-3 text-red-800">Proyectos Full Stack (2-3 meses)</h3>
+                                    <div class="space-y-3 mb-4">
+                                        <div class="bg-red-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-red-800 mb-2">🎯 Proyectos Sugeridos</h4>
+                                            <ul class="text-sm text-red-700 space-y-1">
+                                                <li>• <strong>E-commerce</strong> - Productos, carrito, pagos</li>
+                                                <li>• <strong>Red Social</strong> - Posts, likes, comentarios</li>
+                                                <li>• <strong>Sistema de Gestión</strong> - CRUD completo</li>
+                                                <li>• <strong>Blog/CMS</strong> - Contenido, categorías, usuarios</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-blue-50 p-3 rounded-lg">
+                                            <h4 class="font-semibold text-blue-800 mb-2">🚀 Características a Incluir</h4>
+                                            <ul class="text-sm text-blue-700 space-y-1">
+                                                <li>• Autenticación y autorización</li>
+                                                <li>• Responsive design</li>
+                                                <li>• API REST completa</li>
+                                                <li>• Validaciones frontend y backend</li>
+                                                <li>• Manejo de errores</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fase 7: Optimización -->
+                    <div class="tech-card rounded-xl p-6">
+                        <div class="flex items-start">
+                            <div class="bg-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">
+                                7
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold mb-3 text-gray-800">Optimización y Deployment (1-2 meses)</h3>
+                                <div class="grid md:grid-cols-3 gap-4">
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <h4 class="font-semibold text-gray-800 mb-2">Performance</h4>
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Code splitting</li>
+                                            <li>• Lazy loading</li>
+                                            <li>• Caching</li>
+                                            <li>• Optimización de imágenes</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-blue-50 p-3 rounded-lg">
+                                        <h4 class="font-semibold text-blue-800 mb-2">Testing</h4>
+                                        <ul class="text-sm text-blue-700 space-y-1">
+                                            <li>• Unit tests</li>
+                                            <li>• Integration tests</li>
+                                            <li>• E2E tests</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-green-50 p-3 rounded-lg">
+                                        <h4 class="font-semibold text-green-800 mb-2">Deployment</h4>
+                                        <ul class="text-sm text-green-700 space-y-1">
+                                            <li>• CI/CD</li>
+                                            <li>• Docker</li>
+                                            <li>• Cloud hosting</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consejos Adicionales -->
+            <div class="mt-12 tech-card rounded-xl p-6">
+                <h3 class="text-2xl font-bold mb-4 text-center">💡 Consejos para el Éxito</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-lg mb-3 text-blue-800">📚 Recursos de Aprendizaje</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-book text-blue-500 mr-2"></i><strong>Documentación oficial</strong> - Siempre la mejor fuente</li>
+                            <li><i class="fas fa-video text-red-500 mr-2"></i><strong>YouTube</strong> - Traversy Media, The Net Ninja</li>
+                            <li><i class="fas fa-laptop-code text-green-500 mr-2"></i><strong>Plataformas</strong> - Udemy, Platzi, freeCodeCamp</li>
+                            <li><i class="fas fa-users text-purple-500 mr-2"></i><strong>Comunidades</strong> - Stack Overflow, Reddit, Discord</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg mb-3 text-green-800">🎯 Mejores Prácticas</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-code text-orange-500 mr-2"></i><strong>Practica diariamente</strong> - Consistencia es clave</li>
+                            <li><i class="fas fa-project-diagram text-blue-500 mr-2"></i><strong>Construye proyectos</strong> - Aprende haciendo</li>
+                            <li><i class="fas fa-github text-gray-500 mr-2"></i><strong>Usa GitHub</strong> - Muestra tu trabajo</li>
+                            <li><i class="fas fa-network-wired text-purple-500 mr-2"></i><strong>Networking</strong> - Conecta con otros desarrolladores</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-2xl text-blue-400 mr-2"></i>
+                        <span class="text-xl font-bold">DevWeb Academy</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Tu guía completa para aprender desarrollo web desde cero hasta convertirte en un profesional.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tecnologías</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#frontend" class="hover:text-white transition">Frontend</a></li>
+                        <li><a href="#backend" class="hover:text-white transition">Backend</a></li>
+                        <li><a href="#bases-datos" class="hover:text-white transition">Bases de Datos</a></li>
+                        <li><a href="#herramientas" class="hover:text-white transition">Herramientas</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Recursos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#roadmap" class="hover:text-white transition">Roadmap</a></li>
+                        <li><a href="#" class="hover:text-white transition">Proyectos</a></li>
+                        <li><a href="#" class="hover:text-white transition">Tutoriales</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Útiles</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://developer.mozilla.org/" target="_blank" class="hover:text-white transition">MDN Web Docs</a></li>
+                        <li><a href="https://stackoverflow.com/" target="_blank" class="hover:text-white transition">Stack Overflow</a></li>
+                        <li><a href="https://github.com/" target="_blank" class="hover:text-white transition">GitHub</a></li>
+                        <li><a href="https://www.freecodecamp.org/" target="_blank" class="hover:text-white transition">freeCodeCamp</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 DevWeb Academy. Creado con ❤️ para la comunidad de desarrolladores.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm');
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm');
+            }
+        });
+
+        // Add animation to tech cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all tech cards
+        document.querySelectorAll('.tech-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add progress animation to roadmap
+        const roadmapSteps = document.querySelectorAll('.roadmap-step');
+        roadmapSteps.forEach((step, index) => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateX(-30px)';
+            step.style.transition = `opacity 0.8s ease ${index * 0.2}s, transform 0.8s ease ${index * 0.2}s`;
+            observer.observe(step);
+        });
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.textContent = '';
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect on page load
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 100);
+            }
+        });
+
+        // Add copy code functionality
+        function addCodeCopyButtons() {
+            document.querySelectorAll('.code-block').forEach(block => {
+                const button = document.createElement('button');
+                button.innerHTML = '<i class="fas fa-copy"></i>';
+                button.className = 'absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white px-2 py-1 rounded text-xs transition';
+                button.style.position = 'absolute';
+                
+                block.style.position = 'relative';
+                block.appendChild(button);
+                
+                button.addEventListener('click', () => {
+                    const code = block.querySelector('code').textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i>';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="fas fa-copy"></i>';
+                        }, 2000);
+                    });
+                });
+            });
+        }
+
+        // Initialize copy buttons
+        document.addEventListener('DOMContentLoaded', addCodeCopyButtons);
+    </script>
+
+<style>
+#minimax-floating-ball {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 12px;
+  background: #222222;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  color: #F8F8F8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#minimax-floating-ball:hover {
+  transform: translateY(-2px);
+  background: #383838;
+}
+
+.minimax-ball-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minimax-logo-wave {
+  width: 26px;
+  height: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22' viewBox='0 0 26 22' fill='none'%3E%3Cg clip-path='url(%23clip0_3442_102412)'%3E%3Cpath d='M12.8405 14.6775C12.8405 14.9897 13.0932 15.2424 13.4055 15.2424C13.7178 15.2424 13.9705 14.9897 13.9705 14.6775V2.98254C13.9705 1.88957 13.0809 1 11.9879 1C10.895 1 10.0054 1.88957 10.0054 2.98254V11.566V17.1068C10.0054 17.5773 9.62327 17.9594 9.1528 17.9594C8.68233 17.9594 8.30021 17.5773 8.30021 17.1068V8.04469C8.30021 6.95172 7.41063 6.06215 6.31767 6.06215C5.22471 6.06215 4.33513 6.95172 4.33513 8.04469V11.8855C4.33513 12.3559 3.953 12.7381 3.48254 12.7381C3.01207 12.7381 2.62994 12.3559 2.62994 11.8855V10.4936C2.62994 10.1813 2.37725 9.92861 2.06497 9.92861C1.7527 9.92861 1.5 10.1813 1.5 10.4936V11.8855C1.5 12.9784 2.38957 13.868 3.48254 13.868C4.5755 13.868 5.46508 12.9784 5.46508 11.8855V8.04469C5.46508 7.57422 5.8472 7.19209 6.31767 7.19209C6.78814 7.19209 7.17026 7.57422 7.17026 8.04469V17.1068C7.17026 18.1998 8.05984 19.0894 9.1528 19.0894C10.2458 19.0894 11.1353 18.1998 11.1353 17.1068V2.98254C11.1353 2.51207 11.5175 2.12994 11.9879 2.12994C12.4584 2.12994 12.8405 2.51207 12.8405 2.98254V14.6775Z' fill='%23F8F8F8'/%3E%3Cpath d='M23.3278 6.06215C22.2348 6.06215 21.3452 6.95172 21.3452 8.04469V15.6143C21.3452 16.0847 20.9631 16.4669 20.4926 16.4669C20.0222 16.4669 19.6401 16.0847 19.6401 15.6143V2.98254C19.6401 1.88957 18.7505 1 17.6575 1C16.5645 1 15.675 1.88957 15.675 2.98254V19.0175C15.675 19.4879 15.2928 19.8701 14.8224 19.8701C14.3519 19.8701 13.9698 19.4879 13.9698 19.0175V17.0329C13.9698 16.7206 13.7171 16.4679 13.4048 16.4679C13.0925 16.4679 12.8398 16.7206 12.8398 17.0329V19.0175C12.8398 20.1104 13.7294 21 14.8224 21C15.9153 21 16.8049 20.1104 16.8049 19.0175V2.98254C16.8049 2.51207 17.187 2.12994 17.6575 2.12994C18.128 2.12994 18.5101 2.51207 18.5101 2.98254V15.6143C18.5101 16.7072 19.3997 17.5968 20.4926 17.5968C21.5856 17.5968 22.4752 16.7072 22.4752 15.6143V8.04469C22.4752 7.57422 22.8573 7.19209 23.3278 7.19209C23.7982 7.19209 24.1804 7.57422 24.1804 8.04469V14.6775C24.1804 14.9897 24.4331 15.2424 24.7453 15.2424C25.0576 15.2424 25.3103 14.9897 25.3103 14.6775V8.04469C25.3103 6.95172 24.4207 6.06215 23.3278 6.06215Z' fill='%23F8F8F8'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3442_102412'%3E%3Crect width='25' height='22' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.minimax-ball-text {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.minimax-close-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.minimax-close-icon:hover {
+  opacity: 1;
+}
+</style>
+<div id="minimax-floating-ball">
+  <div class="minimax-ball-content">
+    <div class="minimax-logo-wave"></div>
+    <span class="minimax-ball-text">Created by MiniMax Agent</span>
+  </div>
+  <div class="minimax-close-icon">×</div>
+</div>
+<script>
+// Initialize floating ball functionality
+function initFloatingBall() {
+  const ball = document.getElementById('minimax-floating-ball');
+  if (!ball) return;
+
+  // Initial animation
+  ball.style.opacity = '0';
+  ball.style.transform = 'translateY(20px)';
+
+  setTimeout(() => {
+    ball.style.opacity = '1';
+    ball.style.transform = 'translateY(0)';
+  }, 500);
+
+  // Handle logo click
+  const ballContent = ball.querySelector('.minimax-ball-content');
+  ballContent.addEventListener('click', function (e) {
+    e.stopPropagation();
+    window.open('https://agent.minimax.io/agent', '_blank');
+    ball.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      ball.style.transform = 'scale(1)';
+    }, 100);
+  });
+
+  // Handle close button click
+  const closeIcon = ball.querySelector('.minimax-close-icon');
+  closeIcon.addEventListener('click', function (e) {
+    e.stopPropagation();
+    ball.style.opacity = '0';
+    ball.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      ball.style.display = 'none';
+    }, 300);
+  });
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initFloatingBall); 
+</script>
+
+</body>
+</html>
